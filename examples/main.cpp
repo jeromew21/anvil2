@@ -1,5 +1,9 @@
 #include "entity/base_entity.hpp"
 
+#include <ankerl/unordered_dense.h>
+#include <nlohmann/json.hpp>
+#include <moodycamel/concurrentqueue.h>
+
 
 #include <raylib.h>
 #include <rlImGui.h>	// include the API header
@@ -18,6 +22,13 @@ struct ItemList {
 };
 
 int main(int argc, char* argv[]) {
+    moodycamel::ConcurrentQueue<int> q;
+    q.enqueue(25);
+
+    int item;
+    bool found = q.try_dequeue(item);
+    assert(found && item == 25);
+
     int id = 0;
 
     const int screenWidth = 800;

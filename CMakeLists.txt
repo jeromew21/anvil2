@@ -15,8 +15,10 @@ endif()
 set(IMGUI_PATH external/imgui-1.93.0)
 set(RAYLIB_PATH external/raylib-6.2)
 set(RLIMGUI_PATH external/rlImGui-Raylib_6_0)
+set(FREETYPE_PATH external/freetype-2.15.0)
+set(HARFBUZZ_PATH external/harfbuzz-14.6.0)
+set(FMT_PATH external/fmt-12.2.0)
 
-#add_subdirectory(external/freetype)
 #add_subdirectory(external/harfbuzz)
 #add_subdirectory(external/fmt)
 #add_subdirectory(external/concurrentqueue)
@@ -28,11 +30,16 @@ add_subdirectory(${RAYLIB_PATH})
 unset(BUILD_EXAMPLES)
 unset(BUILD_GAMES)
 
+add_subdirectory(${FREETYPE_PATH})
+add_subdirectory(${HARFBUZZ_PATH})
+add_subdirectory(${FMT_PATH})
+
 # Scripting languages
 # set(LUA_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/lua-5.4.9)
 # set(SOL_PATH external/sol2)
 # add_subdirectory(${SOL_PATH})
 
+# Make sure you build lua inside external/lua
 # add_library(lua STATIC IMPORTED)
 # if (UNIX)
 #     set_target_properties(lua PROPERTIES
@@ -62,8 +69,7 @@ target_include_directories(anvil-raylib-backend
         ${RLIMGUI_PATH}
 )
 
-#target_link_libraries(anvil-raylib-backend PRIVATE freetype)
-target_link_libraries(anvil-raylib-backend PUBLIC raylib)
+target_link_libraries(anvil-raylib-backend PUBLIC raylib freetype harfbuzz)
 
 set(ANVIL_SOURCES
     src/anvil.cpp
@@ -76,20 +82,21 @@ target_include_directories(anvil2 PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
     $<INSTALL_INTERFACE:include>
     ${SOL_PATH/include}
+    external/include
 )
 
 # These are the annoying things that we want to fully abstract over
 # and not expose to the API.
-# target_link_libraries(anvil PRIVATE harfbuzz)
+# target_link_libraries(anvil2 PRIVATE harfbuzz)
 
 # These are available for the user to use, or drop into if they want.
 target_link_libraries(anvil2 PUBLIC
         anvil-raylib-backend
+        fmt::fmt
   #      lua
   #      sol2::sol2
         #frameflow::frameflow
         #concurrentqueue
-        #fmt::fmt
 )
 
 add_executable(hello-world examples/main.cpp)
