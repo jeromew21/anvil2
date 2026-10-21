@@ -1,0 +1,3 @@
+[submodule "external/frameflow"]
+	path = external/frameflow
+	url = https://github.com/jeromew21/frameflow.git

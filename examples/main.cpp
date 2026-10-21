@@ -1,13 +1,16 @@
 #include "entity/base_entity.hpp"
+#include "filesystem/filesystem.hpp"
+#include "json/json.hpp"
 
 #include <ankerl/unordered_dense.h>
-#include <nlohmann/json.hpp>
 #include <moodycamel/concurrentqueue.h>
 
 
 #include <raylib.h>
 #include <rlImGui.h>	// include the API header
 #include <imgui.h>
+
+#include <fmt/core.h>
 
 struct ItemContainer {
     bool isFreezer;
@@ -24,6 +27,8 @@ struct ItemList {
 int main(int argc, char* argv[]) {
     moodycamel::ConcurrentQueue<int> q;
     q.enqueue(25);
+
+    fmt::println("{}", path_join(path_to_executable_dir(), "abafoobar"));
 
     int item;
     bool found = q.try_dequeue(item);

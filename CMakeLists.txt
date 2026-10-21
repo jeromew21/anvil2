@@ -33,6 +33,7 @@ unset(BUILD_GAMES)
 add_subdirectory(${FREETYPE_PATH})
 add_subdirectory(${HARFBUZZ_PATH})
 add_subdirectory(${FMT_PATH})
+add_subdirectory(external/frameflow)
 
 # Scripting languages
 # set(LUA_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/lua-5.4.9)
@@ -74,6 +75,7 @@ target_link_libraries(anvil-raylib-backend PUBLIC raylib freetype harfbuzz)
 set(ANVIL_SOURCES
     src/anvil.cpp
     src/math/vec2.cpp
+    src/filesystem/filesystem.cpp
 )
 
 add_library(anvil2 ${ANVIL_SOURCES})
@@ -92,11 +94,10 @@ target_include_directories(anvil2 PUBLIC
 # These are available for the user to use, or drop into if they want.
 target_link_libraries(anvil2 PUBLIC
         anvil-raylib-backend
+        frameflow
         fmt::fmt
   #      lua
   #      sol2::sol2
-        #frameflow::frameflow
-        #concurrentqueue
 )
 
 add_executable(hello-world examples/main.cpp)
