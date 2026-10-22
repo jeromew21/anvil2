@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <optional>
 
 #ifdef __linux__
 #include <unistd.h>
@@ -16,7 +17,7 @@
 namespace fs = std::filesystem;
 
 namespace {
-    fs::path executable_path() {
+    std::optional<fs::path> executable_path() {
 #if defined(PLATFORM_WEB)
         return "/";
 #elif __linux__
@@ -40,7 +41,7 @@ namespace {
         auto path = fs::path{buffer};
         return path;
 #endif
-        return "";
+        return std::nullopt;
     }
 }
 
@@ -49,5 +50,5 @@ std::string path_join(const std::string& a, const std::string& b) {
 }
 
 std::string path_to_executable_dir() {
-    return executable_path().parent_path();
+    return executable_path()->parent_path();
 }

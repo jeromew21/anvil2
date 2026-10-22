@@ -5,7 +5,7 @@
 // Add this template specialization for std::optional support
 namespace nlohmann {
     template<typename T>
-    struct adl_serializer<std::optional<T> > {
+    struct adl_serializer<std::optional<T>> {
         static void to_json(json &j, const std::optional<T> &opt) {
             if (opt) {
                 j = *opt;
@@ -33,9 +33,9 @@ std::string json_serialize(const T &obj) {
 }
 
 template<typename T>
-T json_deserialize(const std::string &jsonString) {
+T json_deserialize(const std::string &json_string) {
     using namespace nlohmann;
-    json j = json::parse(jsonString);
+    json j = json::parse(json_string);
     return j.get<T>();
 }
 
