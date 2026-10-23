@@ -18,6 +18,7 @@ set(RLIMGUI_PATH external/rlImGui-Raylib_6_0)
 set(FREETYPE_PATH external/freetype-2.15.0)
 set(HARFBUZZ_PATH external/harfbuzz-14.6.0)
 set(FMT_PATH external/fmt-12.2.0)
+set(PHYSFS_PATH external/physfs)
 
 #add_subdirectory(external/harfbuzz)
 #add_subdirectory(external/fmt)
@@ -32,8 +33,13 @@ unset(BUILD_GAMES)
 
 add_subdirectory(${FREETYPE_PATH})
 add_subdirectory(${HARFBUZZ_PATH})
+add_subdirectory(${PHYSFS_PATH})
 add_subdirectory(${FMT_PATH})
+get_target_property(FMT_INCLUDES fmt::fmt
+    INTERFACE_INCLUDE_DIRECTORIES)
+message(STATUS "fmt includes: ${FMT_INCLUDES}")
 add_subdirectory(external/frameflow)
+
 
 # Scripting languages
 # set(LUA_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/lua-5.4.9)
@@ -58,8 +64,8 @@ add_library(anvil-raylib-backend STATIC
         ${IMGUI_PATH}/imgui_demo.cpp
         ${IMGUI_PATH}/misc/cpp/imgui_stdlib.h
         ${IMGUI_PATH}/misc/cpp/imgui_stdlib.cpp
-        #${IMGUI_PATH}/misc/freetype/imgui_freetype.h
-        #${IMGUI_PATH}/misc/freetype/imgui_freetype.cpp
+        ${IMGUI_PATH}/misc/freetype/imgui_freetype.h
+        ${IMGUI_PATH}/misc/freetype/imgui_freetype.cpp
         ${RLIMGUI_PATH}/rlImGui.cpp
 )
 
@@ -96,6 +102,7 @@ target_link_libraries(anvil2 PUBLIC
         anvil-raylib-backend
         frameflow
         fmt::fmt
+        PhysFS::PhysFS
   #      lua
   #      sol2::sol2
 )

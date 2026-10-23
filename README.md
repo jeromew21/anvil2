@@ -10,8 +10,15 @@ cmake --build build
 ```
 
 ## Dependencies
+Dependencies are vendored in `external`.
+Header-only libraries are vendored in `external/include`.
 
-Most dependencies are vendored, but there are some git modules for projects that have not stabilized.
+Try to find an versioned release. Some projects, like sol2,
+do not have recent releases and we have to simply download the latest source.
+
+TODO: make sure we are honoring licenses.
+
+**Note**: Avoid submodules. The below information is probably wrong.
 
 Add a new submodule:
 ```bash
@@ -29,4 +36,4 @@ git submodule update --remote --recursive
 ```
 
 ## Building on Web
-
+TODO

@@ -25,6 +25,7 @@ struct ItemList {
 };
 
 int main(int argc, char* argv[]) {
+    fmt::println("Hello, World!");
     moodycamel::ConcurrentQueue<int> q;
     q.enqueue(25);
 
