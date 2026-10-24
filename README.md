@@ -1,39 +1,31 @@
 # Anvil 2
 Game dev toolkit build on Raylib
 
-### Development
+## Using in your game
+Ideally vendor or submodule this repository.
 
-## Building (CMake + Ninja)
+## Development
+
+### Building (CMake + Ninja)
 ```
 cmake -S . -B build -G Ninja
 cmake --build build
 ```
 
-## Dependencies
+### Dependencies
 Dependencies are vendored in `external`.
-Header-only libraries are vendored in `external/include`.
+
+Header-only libraries are vendored (with custom namespace) in `external/include`.
 
 Try to find an versioned release. Some projects, like sol2,
 do not have recent releases and we have to simply download the latest source.
 
 TODO: make sure we are honoring licenses.
 
-**Note**: Avoid submodules. The below information is probably wrong.
+**Note**: Avoid submodules. I don't understand how recursive submodules work. One layer is more than enough added complexity.
 
-Add a new submodule:
-```bash
-git submodule add <repository_url> [<destination_path>]
-```
+### Windows Development
+TODO
 
-Intialize submodules (after cloning this repo):
-```bash
-git submodule update --init --recursive
-```
-
-Update submodules
-```bash
-git submodule update --remote --recursive
-```
-
-## Building on Web
+### Building on Web
 TODO
