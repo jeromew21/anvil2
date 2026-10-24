@@ -4,7 +4,6 @@ CMakeFiles/
 CMakeCache.txt
 build.ninja
 Makefile
-test_physfs*
 libphysfs.*
 physfs*.dll
 install_manifest.txt
