@@ -12,4 +12,3 @@ PhysFS-*.cmake
 cmake_install.cmake
 CMakeDoxy*
 extras/physfs.pc
-Doxyfile
