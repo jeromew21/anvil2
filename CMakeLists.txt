@@ -33,7 +33,12 @@ unset(BUILD_GAMES)
 
 add_subdirectory(${FREETYPE_PATH})
 add_subdirectory(${HARFBUZZ_PATH})
+
+set(PHYSFS_BUILD_STATIC ON CACHE BOOL "" FORCE)
+set(PHYSFS_BUILD_SHARED OFF CACHE BOOL "" FORCE)
+set(PHYSFS_BUILD_TEST OFF CACHE BOOL "" FORCE)
 add_subdirectory(${PHYSFS_PATH})
+
 add_subdirectory(${FMT_PATH})
 get_target_property(FMT_INCLUDES fmt::fmt
     INTERFACE_INCLUDE_DIRECTORIES)
