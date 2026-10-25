@@ -11,6 +11,8 @@ if(EMSCRIPTEN)
     set(PLATFORM "Web")
 endif()
 
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static libraries" FORCE)
+
 # Core dependencies
 set(IMGUI_PATH external/imgui-1.93.0)
 set(RAYLIB_PATH external/raylib-6.2)
@@ -31,7 +33,12 @@ add_subdirectory(${RAYLIB_PATH})
 unset(BUILD_EXAMPLES)
 unset(BUILD_GAMES)
 
+set(FT_DISABLE_PNG ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_BROTLI ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_BZIP2 ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_ZLIB ON CACHE BOOL "" FORCE)
 add_subdirectory(${FREETYPE_PATH})
+
 add_subdirectory(${HARFBUZZ_PATH})
 
 set(PHYSFS_BUILD_STATIC ON CACHE BOOL "" FORCE)
@@ -40,9 +47,7 @@ set(PHYSFS_BUILD_TEST OFF CACHE BOOL "" FORCE)
 add_subdirectory(${PHYSFS_PATH})
 
 add_subdirectory(${FMT_PATH})
-get_target_property(FMT_INCLUDES fmt::fmt
-    INTERFACE_INCLUDE_DIRECTORIES)
-message(STATUS "fmt includes: ${FMT_INCLUDES}")
+
 add_subdirectory(external/frameflow)
 
 
