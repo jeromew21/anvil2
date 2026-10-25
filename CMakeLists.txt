@@ -13,6 +13,8 @@ endif()
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static libraries" FORCE)
 
+option(ANVIL2_BUILD_LUA "Build Lua scripting support" OFF)
+
 # Core dependencies
 set(IMGUI_PATH external/imgui-1.93.0)
 set(RAYLIB_PATH external/raylib-6.2)
@@ -21,11 +23,6 @@ set(FREETYPE_PATH external/freetype-2.15.0)
 set(HARFBUZZ_PATH external/harfbuzz-14.6.0)
 set(FMT_PATH external/fmt-12.2.0)
 set(PHYSFS_PATH external/physfs)
-
-#add_subdirectory(external/harfbuzz)
-#add_subdirectory(external/fmt)
-#add_subdirectory(external/concurrentqueue)
-#add_subdirectory(external/frameflow)
 
 set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(BUILD_GAMES OFF CACHE BOOL "" FORCE)
@@ -50,20 +47,21 @@ add_subdirectory(${FMT_PATH})
 
 add_subdirectory(external/frameflow)
 
+if (ANVIL2_BUILD_LUA)
+    set(LUA_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/lua-5.4.9)
+    set(SOL_PATH external/sol2)
+    add_subdirectory(${SOL_PATH})
 
-# Scripting languages
-# set(LUA_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/lua-5.4.9)
-# set(SOL_PATH external/sol2)
-# add_subdirectory(${SOL_PATH})
-
-# Make sure you build lua inside external/lua
-# add_library(lua STATIC IMPORTED)
-# if (UNIX)
-#     set_target_properties(lua PROPERTIES
-#         IMPORTED_LOCATION "${LUA_PATH}/src/liblua.a"
-#         INTERFACE_INCLUDE_DIRECTORIES "${LUA_PATH}/src"
-#     )
-# endif()
+    # Make sure you build lua inside external/lua
+    # not sure what to do tbh, will need to look at this
+    add_library(lua STATIC IMPORTED)
+    if (UNIX)
+        set_target_properties(lua PROPERTIES
+            IMPORTED_LOCATION "${LUA_PATH}/src/liblua.a"
+            INTERFACE_INCLUDE_DIRECTORIES "${LUA_PATH}/src"
+        )
+    endif()
+endif()
 
 add_library(anvil-raylib-backend STATIC
         ${IMGUI_PATH}/imgui.h
