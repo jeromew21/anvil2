@@ -46,9 +46,9 @@ namespace {
 }
 
 std::string path_join(const std::string& a, const std::string& b) {
-    return fs::path(a) / fs::path(b);
+    return (fs::path(a) / fs::path(b)).string();
 }
 
 std::string path_to_executable_dir() {
-    return executable_path()->parent_path();
+    return executable_path()->parent_path().string();
 }
