@@ -39,7 +39,7 @@ namespace {
         char buffer[MAX_PATH];
         GetModuleFileNameA(NULL, buffer, MAX_PATH);
         auto path = fs::path{buffer};
-        return path;
+        return path.string();
 #endif
         return std::nullopt;
     }
