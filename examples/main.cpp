@@ -1,7 +1,3 @@
-#include "entity/base_entity.hpp"
-#include "filesystem/filesystem.hpp"
-#include "json/json.hpp"
-
 #include <ankerl/unordered_dense.h>
 #include <moodycamel/concurrentqueue.h>
 
@@ -36,8 +32,6 @@ int main(int argc, char* argv[]) {
     lua.set_function("beep", [&x]{ ++x; fmt::println("fooo"); });
     lua.script("beep()");
     assert(x == 1);
-
-    fmt::println("{}", path_join(path_to_executable_dir(), "abafoobar"));
 
     int item;
     bool found = q.try_dequeue(item);

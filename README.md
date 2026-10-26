@@ -1,9 +1,10 @@
 # Anvil 2
-Game dev toolkit build on Raylib
+Game dev toolkit build on Raylib.
+
+The core of this library is Raylib + Dear ImGui.
 
 ## Using in your game
 Ideally vendor or submodule this repository.
-[test]
 
 ## Development
 

@@ -1,7 +1,3 @@
--Remove entity module
-
--Consider removing nlohmann json
-
 -Consider removing filesystem module (physfs already takes care of it)
 -Consider removing vector math (using dedicated library instead)
 -Consider adding:
