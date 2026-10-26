@@ -1,7 +1,13 @@
--Consider removing filesystem module (physfs already takes care of it)
 -Consider removing vector math (using dedicated library instead)
+-Consider not doing two cmake targets
 -Consider adding:
-    -Box2d
+    -GLM
+    -Google Test
+    -Google benchmark
+    -CLI11 (command line parsing)
+    -jolt physics/Bullet Physics
+
+    -doxygen
 
 -Add tweening
 

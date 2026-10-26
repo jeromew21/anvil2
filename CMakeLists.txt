@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.20)
 project(anvil2-kit VERSION 0.1.0 LANGUAGES CXX)
 
 option(ANVIL2_BUILD_LUA "Build Lua scripting support" ON)
+option(ANVIL2_BUILD_BOX2D "Build Box2D support" ON)
 option(ANVIL2_BUILD_EXAMPLES "Build examples" ON)
+
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -21,6 +23,7 @@ set(HARFBUZZ_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/harfbuzz-14.6.0")
 set(FMT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/fmt-12.2.0")
 set(PHYSFS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/physfs")
 set(FRAMEFLOW_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/frameflow")
+set(SPDLOG_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/spdlog-1.17.0")
 
 set(BUILD_EXAMPLES OFF)
 set(BUILD_GAMES OFF)
@@ -45,11 +48,18 @@ add_subdirectory("${FMT_PATH}")
 
 add_subdirectory("${FRAMEFLOW_PATH}")
 
+add_subdirectory("${SPDLOG_PATH}")
+
 if (ANVIL2_BUILD_LUA)
     set(LUA_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/Lua-5.4.7")
     set(SOL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/sol2")
     add_subdirectory("${LUA_PATH}")
     add_subdirectory("${SOL_PATH}")
+endif()
+
+if (ANVIL2_BUILD_BOX2D)
+    set(BOX2D_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/box2d-3.2.0")
+    add_subdirectory("${BOX2D_PATH}")
 endif()
 
 add_library(anvil-raylib-backend STATIC
@@ -92,10 +102,15 @@ target_link_libraries(anvil2 PUBLIC
     frameflow
     fmt::fmt
     PhysFS::PhysFS
+    spdlog::spdlog
 )
 
 if (ANVIL2_BUILD_LUA)
     target_link_libraries(anvil2 PUBLIC lua_static sol2::sol2)
+endif()
+
+if (ANVIL2_BUILD_BOX2D)
+    target_link_libraries(anvil2 PUBLIC box2d::box2d)
 endif()
 
 if (ANVIL2_BUILD_EXAMPLES)
