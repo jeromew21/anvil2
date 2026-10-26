@@ -12,6 +12,8 @@
 
 #include <fmt/core.h>
 
+#include <sol/sol.hpp>
+
 struct ItemContainer {
     bool isFreezer;
     double weightCapacity;
@@ -28,6 +30,12 @@ int main(int argc, char* argv[]) {
     fmt::println("Hello, World!");
     moodycamel::ConcurrentQueue<int> q;
     q.enqueue(25);
+
+    sol::state lua;
+    int x = 0;
+    lua.set_function("beep", [&x]{ ++x; fmt::println("fooo"); });
+    lua.script("beep()");
+    assert(x == 1);
 
     fmt::println("{}", path_join(path_to_executable_dir(), "abafoobar"));
 
