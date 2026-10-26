@@ -97,7 +97,6 @@ target_link_libraries(anvil2 PUBLIC
 
 if (ANVIL2_BUILD_LUA)
     target_link_libraries(anvil2 PUBLIC lua_static sol2::sol2)
-    target_include_directories(anvil2 PUBLIC "${SOL_PATH}/include")
 endif()
 
 if (ANVIL2_BUILD_EXAMPLES)
