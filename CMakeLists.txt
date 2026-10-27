@@ -99,7 +99,7 @@ target_include_directories(anvil2 PUBLIC
 
 target_link_libraries(anvil2 PUBLIC
     anvil-raylib-backend
-    frameflow
+    frameflow::frameflow
     fmt::fmt
     PhysFS::PhysFS
     spdlog::spdlog
