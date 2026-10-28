@@ -33,6 +33,10 @@ int main(int argc, char* argv[]) {
 
     Defer defer([&]{
         fmt::println("Deferred execution");
+
+        for (int i = 0; i < 10; ++i) {
+            fmt::println("Random number {}: {}", i, rnd::randint(0, 100));
+        }
     });
 
     sol::state lua;
