@@ -1,3 +1,6 @@
+#include "anvil2/signal/signal.hpp"
+#include "anvil2/defer/defer.hpp"
+
 #include <ankerl/unordered_dense.h>
 #include <moodycamel/concurrentqueue.h>
 
@@ -26,6 +29,10 @@ int main(int argc, char* argv[]) {
     fmt::println("Hello, World!");
     moodycamel::ConcurrentQueue<int> q;
     q.enqueue(25);
+
+    Defer defer([&]{
+        fmt::println("Deferred execution");
+    });
 
     sol::state lua;
     int x = 0;

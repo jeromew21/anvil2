@@ -7,8 +7,6 @@
     -CLI11 (command line parsing)
     -jolt physics/Bullet Physics
 
-    -doxygen
-
 -Add tweening
 
 -Stabilize frameflow and pin to version

@@ -25,21 +25,19 @@
 var NAVTREE =
 [
   [ "Anvil2", "index.html", [
-    [ "Anvil 2", "md__r_e_a_d_m_e.html", [
-      [ "Using in your game", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "Development", "md__r_e_a_d_m_e.html#autotoc_md2", [
-        [ "Building (CMake + Ninja)", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
-        [ "Dependencies", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
-        [ "Windows Development", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "Building on Web", "md__r_e_a_d_m_e.html#autotoc_md6", null ]
-      ] ]
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"annotated.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

@@ -1,5 +1,9 @@
 #pragma once
 
+/**
+ * @brief A 2D vector with basic arithmetic operations.
+ * DEPRECATED: This struct may be removed in future versions.
+ */
 struct Vec2 {
     double x = 0.0;
     double y = 0.0;

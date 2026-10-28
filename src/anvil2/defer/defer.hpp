@@ -3,6 +3,14 @@
 #include <utility>
 #include <type_traits>
 
+/**
+ * @brief A utility class that executes a callback when it goes out of scope.
+ *
+ * This class is useful for implementing RAII-style deferred execution.
+ * The callback is executed unless the Defer object is dismissed.
+ *
+ * @tparam F The type of the callback function.
+ */
 template<typename F>
 class Defer {
 public:
@@ -27,6 +35,12 @@ public:
         }
     }
 
+    /**
+     * @brief Dismiss the deferred execution.
+     *
+     * After calling this function, the callback will not be executed
+     * when the Defer object goes out of scope.
+     */
     void dismiss() noexcept {
         active = false;
     }

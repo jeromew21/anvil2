@@ -1,18 +1,18 @@
 var indexSectionsWithContent =
 {
-  0: "2abcdginouwy",
-  1: "2abcdginouwy"
+  0: "dsv",
+  1: "dsv"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "pages"
+  1: "classes"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Pages"
+  1: "Classes"
 };
 
