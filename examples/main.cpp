@@ -1,5 +1,6 @@
 #include "anvil2/signal/signal.hpp"
 #include "anvil2/defer/defer.hpp"
+#include "anvil2/random/random.hpp"
 
 #include <ankerl/unordered_dense.h>
 #include <moodycamel/concurrentqueue.h>
@@ -36,7 +37,7 @@ int main(int argc, char* argv[]) {
 
     sol::state lua;
     int x = 0;
-    lua.set_function("beep", [&x]{ ++x; fmt::println("fooo"); });
+    lua.set_function("beep", [&x]{ ++x; fmt::println("fooo {}", rnd::random()); });
     lua.script("beep()");
     assert(x == 1);
 

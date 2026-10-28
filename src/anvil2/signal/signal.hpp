@@ -1,3 +1,8 @@
+/**
+ * @file signal.hpp
+ * @brief A signal/slot mechanism for connecting and emitting callbacks.
+ */
+#pragma once
 
 #include <functional>
 #include <vector>

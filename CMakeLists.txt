@@ -86,6 +86,7 @@ target_link_libraries(anvil-raylib-backend PUBLIC raylib freetype harfbuzz)
 
 set(ANVIL_SOURCES
     src/anvil2/math/vec2.cpp
+    src/anvil2/random/random.cpp
 )
 
 add_library(anvil2 STATIC ${ANVIL_SOURCES})
