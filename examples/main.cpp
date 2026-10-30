@@ -31,6 +31,8 @@ int main(int argc, char* argv[]) {
     moodycamel::ConcurrentQueue<int> q;
     q.enqueue(25);
 
+    rnd::seed(0);
+
     Defer defer([&]{
         fmt::println("Deferred execution");
 

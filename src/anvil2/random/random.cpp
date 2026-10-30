@@ -1,19 +1,20 @@
 #include "random.hpp"
 
-#include <chrono>
-#include <random>
 #include <cassert>
+#include <array>
+#include <random>
+#include <algorithm>
 
 namespace {
 struct RandomNumberGenerator {
     std::mt19937 engine;
 
     RandomNumberGenerator() {
-        auto seed =
-            static_cast<uint32_t>(std::chrono::high_resolution_clock::now()
-                                      .time_since_epoch()
-                                      .count());
-        engine.seed(seed);
+        std::random_device rd;
+        std::array<unsigned int, std::mt19937::state_size> seed_data;
+        std::generate(seed_data.begin(), seed_data.end(), std::ref(rd));
+        std::seed_seq seq(seed_data.begin(), seed_data.end());
+        engine.seed(seq);
     }
 };
 
