@@ -129,8 +129,8 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="class_defer.html">Defer</a> &amp;&#160;</td><td class="memItemRight"><b>operator=</b> (const <a class="el" href="class_defer.html">Defer</a> &amp;)=delete</td></tr>
 <tr class="memitem:a472cc5c813017266b8077347cb112aa8" id="r_a472cc5c813017266b8077347cb112aa8"><td class="memItemLeft"><a id="a472cc5c813017266b8077347cb112aa8" name="a472cc5c813017266b8077347cb112aa8"></a>
 <a class="el" href="class_defer.html">Defer</a> &amp;&#160;</td><td class="memItemRight"><b>operator=</b> (<a class="el" href="class_defer.html">Defer</a> &amp;&amp;)=delete</td></tr>
-<tr class="memitem:ab2d07d094632fb7cb5d1861d30b3a14d" id="r_ab2d07d094632fb7cb5d1861d30b3a14d"><td class="memItemLeft"><a id="ab2d07d094632fb7cb5d1861d30b3a14d" name="ab2d07d094632fb7cb5d1861d30b3a14d"></a>
-void&#160;</td><td class="memItemRight"><b>dismiss</b> () noexcept</td></tr>
+<tr class="memitem:ab2d07d094632fb7cb5d1861d30b3a14d" id="r_ab2d07d094632fb7cb5d1861d30b3a14d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab2d07d094632fb7cb5d1861d30b3a14d">dismiss</a> () noexcept</td></tr>
+<tr class="memdesc:ab2d07d094632fb7cb5d1861d30b3a14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dismiss the deferred execution.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -147,8 +147,39 @@ class Defer&lt; F &gt;</div><p>A utility class that executes a callback when it 
   </table>
   </dd>
 </dl>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/defer/<a class="el" href="defer_8hpp_source.html">defer.hpp</a></li>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab2d07d094632fb7cb5d1861d30b3a14d" name="ab2d07d094632fb7cb5d1861d30b3a14d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d07d094632fb7cb5d1861d30b3a14d">&#9670;&#160;</a></span>dismiss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename F&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_defer.html">Defer</a>&lt; F &gt;::dismiss </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dismiss the deferred execution. </p>
+<p>After calling this function, the callback will not be executed when the <a class="el" href="class_defer.html" title="A utility class that executes a callback when it goes out of scope.">Defer</a> object goes out of scope. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/anvil2/defer/<a class="el" href="defer_8hpp_source.html">defer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

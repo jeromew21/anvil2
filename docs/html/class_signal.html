@@ -124,10 +124,10 @@ using&#160;</td><td class="memItemRight"><b>Callback</b> = std::function&lt;void
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af7c8b6f965372f8fe0453622653d10ca" id="r_af7c8b6f965372f8fe0453622653d10ca"><td class="memItemLeft"><a id="af7c8b6f965372f8fe0453622653d10ca" name="af7c8b6f965372f8fe0453622653d10ca"></a>
-void&#160;</td><td class="memItemRight"><b>connect</b> (Callback callback)</td></tr>
-<tr class="memitem:a8ba07de6dddd079761143dc9095127ac" id="r_a8ba07de6dddd079761143dc9095127ac"><td class="memItemLeft"><a id="a8ba07de6dddd079761143dc9095127ac" name="a8ba07de6dddd079761143dc9095127ac"></a>
-void&#160;</td><td class="memItemRight"><b>emit</b> (Args... args) const</td></tr>
+<tr class="memitem:af7c8b6f965372f8fe0453622653d10ca" id="r_af7c8b6f965372f8fe0453622653d10ca"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af7c8b6f965372f8fe0453622653d10ca">connect</a> (Callback callback)</td></tr>
+<tr class="memdesc:af7c8b6f965372f8fe0453622653d10ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a callback to the signal.  <br /></td></tr>
+<tr class="memitem:a8ba07de6dddd079761143dc9095127ac" id="r_a8ba07de6dddd079761143dc9095127ac"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8ba07de6dddd079761143dc9095127ac">emit</a> (Args... args) const</td></tr>
+<tr class="memdesc:a8ba07de6dddd079761143dc9095127ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit the signal, invoking all connected callbacks.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename... Args&gt;<br />
@@ -139,8 +139,79 @@ class Signal&lt; Args &gt;</div><p>A signal/slot mechanism for connecting and em
   </table>
   </dd>
 </dl>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/signal/<a class="el" href="signal_8hpp_source.html">signal.hpp</a></li>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="af7c8b6f965372f8fe0453622653d10ca" name="af7c8b6f965372f8fe0453622653d10ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7c8b6f965372f8fe0453622653d10ca">&#9670;&#160;</a></span>connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_signal.html">Signal</a>&lt; Args &gt;::connect </td>
+          <td>(</td>
+          <td class="paramtype">Callback</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Connect a callback to the signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>The callback function to connect. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8ba07de6dddd079761143dc9095127ac" name="a8ba07de6dddd079761143dc9095127ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba07de6dddd079761143dc9095127ac">&#9670;&#160;</a></span>emit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_signal.html">Signal</a>&lt; Args &gt;::emit </td>
+          <td>(</td>
+          <td class="paramtype">Args...</td>          <td class="paramname"><span class="paramname"><em>args</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Emit the signal, invoking all connected callbacks. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>The arguments to pass to the callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/anvil2/signal/<a class="el" href="signal_8hpp_source.html">signal.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

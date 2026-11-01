@@ -4,6 +4,7 @@ project(anvil2-kit VERSION 0.1.0 LANGUAGES CXX)
 option(ANVIL2_BUILD_LUA "Build Lua scripting support" ON)
 option(ANVIL2_BUILD_BOX2D "Build Box2D support" ON)
 option(ANVIL2_BUILD_EXAMPLES "Build examples" ON)
+option(ANVIL2_BUILD_DOCS "Build documentation" OFF)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
@@ -87,6 +88,7 @@ target_link_libraries(anvil-raylib-backend PUBLIC raylib freetype harfbuzz)
 set(ANVIL_SOURCES
     src/anvil2/math/vec2.cpp
     src/anvil2/random/random.cpp
+    src/anvil2/tween/tween.cpp
 )
 
 add_library(anvil2 STATIC ${ANVIL_SOURCES})
@@ -116,6 +118,19 @@ endif()
 if (ANVIL2_BUILD_EXAMPLES)
     add_executable(hello-world examples/main.cpp)
     target_link_libraries(hello-world PRIVATE anvil2)
+    add_executable(pong examples/pong.cpp)
+    target_link_libraries(pong PRIVATE anvil2)
+endif()
+
+if (ANVIL2_BUILD_DOCS)
+    find_package(Doxygen REQUIRED)
+
+    add_custom_target(anvil2-docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Doxyfile
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+        COMMENT "Generating documentation"
+        VERBATIM
+    )
 endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")

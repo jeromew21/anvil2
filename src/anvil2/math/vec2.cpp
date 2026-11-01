@@ -8,7 +8,7 @@ Vec2 Vec2::negate(const Vec2& a) {
     return {-a.x, -a.y};
 }
 
-Vec2 Vec2::scale(const Vec2& a, const double scalar) {
+Vec2 Vec2::scale(const Vec2& a, const float scalar) {
     return {a.x * scalar, a.y * scalar};
 }
 
@@ -20,7 +20,7 @@ Vec2 Vec2::operator-(const Vec2& other) const {
     return add(*this, negate(other));
 }
 
-Vec2 Vec2::operator*(const double scalar) const {
+Vec2 Vec2::operator*(const float scalar) const {
     return scale(*this, scalar);
 }
 
@@ -36,7 +36,7 @@ Vec2& Vec2::operator-=(const Vec2& other) {
     return *this;
 }
 
-Vec2& Vec2::operator*=(const double scalar) {
+Vec2& Vec2::operator*=(const float scalar) {
     this->x *= scalar;
     this->y *= scalar;
     return *this;

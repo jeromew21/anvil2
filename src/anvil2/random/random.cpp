@@ -48,7 +48,7 @@ float random() {
  * @pre a must be less than b.
  * @return A random integer between a and b-1.
  */
-int randint(int a, int b) {
+int random_integer(int a, int b) {
     assert(a < b);
     std::uniform_int_distribution<int> dist(a, b - 1);
     return dist(rng_instance().engine);
@@ -60,9 +60,9 @@ int randint(int a, int b) {
  * @pre a must be greater than 0.
  * @return A random integer between 0 and a-1.
  */
-int randint(int a) {
+int random_integer(int a) {
     assert(a > 0);
-    return randint(0, a);
+    return random_integer(0, a);
 }
 
 /**

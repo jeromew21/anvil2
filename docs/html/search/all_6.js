@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['in_20your_20game_0',['Using in your game',['../md__r_e_a_d_m_e.html#autotoc_md1',1,'']]]
+  ['vec2_0',['Vec2',['../struct_vec2.html',1,'']]]
 ];

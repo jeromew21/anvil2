@@ -10,9 +10,9 @@
 namespace rnd {
     float random();
 
-    int randint(int a, int b);
+    int random_integer(int a, int b);
 
-    int randint(int a);
+    int random_integer(int a);
 
     float uniform(float a, float b);
 

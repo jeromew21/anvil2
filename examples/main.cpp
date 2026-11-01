@@ -1,3 +1,11 @@
+/**
+ * Main example using Raylib, ImGui, and anvil2 utilities
+ * Demonstrates:
+ * - Raylib window creation
+ * - ImGui integration
+ * - Lua integration
+ * - anvil2 utilities (signal, defer, random)
+ */
 #include "anvil2/signal/signal.hpp"
 #include "anvil2/defer/defer.hpp"
 #include "anvil2/random/random.hpp"
@@ -14,18 +22,6 @@
 
 #include <sol/sol.hpp>
 
-struct ItemContainer {
-    bool isFreezer;
-    double weightCapacity;
-    std::array<int, 1000> items;
-    std::array<bool, 1000> mask;
-};
-
-struct ItemList {
-    std::vector<int> items;
-    std::vector<double> grams;
-};
-
 int main(int argc, char* argv[]) {
     fmt::println("Hello, World!");
     moodycamel::ConcurrentQueue<int> q;
@@ -33,12 +29,16 @@ int main(int argc, char* argv[]) {
 
     rnd::seed(0);
 
+    Signal<> signal;
+
     Defer defer([&]{
         fmt::println("Deferred execution");
 
         for (int i = 0; i < 10; ++i) {
-            fmt::println("Random number {}: {}", i, rnd::randint(0, 100));
+            fmt::println("Random number {}: {}", i, rnd::random_integer(0, 100));
         }
+
+        signal.emit();
     });
 
     sol::state lua;
@@ -55,6 +55,15 @@ int main(int argc, char* argv[]) {
 
     const int screenWidth = 800;
     const int screenHeight = 450;
+
+    signal.connect([]{
+        fmt::println("Signal triggered");
+    });
+    signal.connect([]{
+        fmt::println("Signal triggered (2)");
+    });
+
+    signal.emit();
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
@@ -92,6 +101,4 @@ int main(int argc, char* argv[]) {
     //--------------------------------------------------------------------------------------
 
     return 0;
-
-	return 0;
 }

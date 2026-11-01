@@ -1,18 +1,24 @@
 var indexSectionsWithContent =
 {
-  0: "dsv",
-  1: "dsv"
+  0: "cderstv",
+  1: "dstv",
+  2: "rst",
+  3: "cde"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes"
+  1: "classes",
+  2: "files",
+  3: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Classes"
+  1: "Classes",
+  2: "Files",
+  3: "Functions"
 };
 
