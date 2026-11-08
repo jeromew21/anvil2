@@ -26,10 +26,6 @@ void Tween::update(const float dt) {
     }
 }
 
-void Tween::cancel() {
-    finished = true;
-}
-
 void TweenManager::update(float delta_time) {
     for (auto& t : tween_list)
         t.update(delta_time);

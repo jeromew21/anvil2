@@ -64,8 +64,6 @@ public:
     void update(float dt);
 
     void set_on_complete(const std::function<void()> &callback);
-
-    void cancel();
 };
 
 class TweenManager {
