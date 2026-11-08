@@ -64,13 +64,11 @@ public:
     void update(float dt);
 
     void set_on_complete(const std::function<void()> &callback);
+
+    void cancel();
 };
 
 class TweenManager {
-    // TODO: this could theoretically be a problem. Consider switching to vector of unique_ptr
-    // Every time calling CreateTween*, we could be invalidating other Tween references.
-    // This probably won't be a problem unless we're creating Tweens from different threads or
-    // doing stuff out of order, but still a problem nonetheless.
     std::vector<Tween> tween_list;
 
 public:

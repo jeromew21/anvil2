@@ -26,15 +26,11 @@ void Tween::update(const float dt) {
     }
 }
 
-void TweenManager::update(float delta_time) {
-#if defined(PLATFORM_WEB)
-    // Force 60fps timestep on web - this seems to work
-    delta_time = 1.0f / 60.0f;
-#else
-    // Clamp to prevent choppy animations from frame spikes
-    // delta_time = std::min(delta_time, 0.1f);
-#endif
+void Tween::cancel() {
+    finished = true;
+}
 
+void TweenManager::update(float delta_time) {
     for (auto& t : tween_list)
         t.update(delta_time);
 
