@@ -2,6 +2,8 @@
 .idea
 .vscode
 build
+build-release
+build-debug
 cmake-build-*
 *.DS_Store
 imgui.ini

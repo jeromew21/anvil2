@@ -1,42 +1,42 @@
 #include "vec2.hpp"
 
-Vec2 Vec2::add(const Vec2& a, const Vec2& b) {
+Vec2f Vec2f::add(const Vec2f& a, const Vec2f& b) {
     return {a.x + b.x, a.y + b.y};
 }
 
-Vec2 Vec2::negate(const Vec2& a) {
+Vec2f Vec2f::negate(const Vec2f& a) {
     return {-a.x, -a.y};
 }
 
-Vec2 Vec2::scale(const Vec2& a, const float scalar) {
+Vec2f Vec2f::scale(const Vec2f& a, const float scalar) {
     return {a.x * scalar, a.y * scalar};
 }
 
-Vec2 Vec2::operator+(const Vec2& other) const {
+Vec2f Vec2f::operator+(const Vec2f& other) const {
     return add(*this, other);
 }
 
-Vec2 Vec2::operator-(const Vec2& other) const {
+Vec2f Vec2f::operator-(const Vec2f& other) const {
     return add(*this, negate(other));
 }
 
-Vec2 Vec2::operator*(const float scalar) const {
+Vec2f Vec2f::operator*(const float scalar) const {
     return scale(*this, scalar);
 }
 
-Vec2& Vec2::operator+=(const Vec2& other) {
+Vec2f& Vec2f::operator+=(const Vec2f& other) {
     this->x += other.x;
     this->y += other.y;
     return *this;
 }
 
-Vec2& Vec2::operator-=(const Vec2& other) {
+Vec2f& Vec2f::operator-=(const Vec2f& other) {
     this->x -= other.x;
     this->y -= other.y;
     return *this;
 }
 
-Vec2& Vec2::operator*=(const float scalar) {
+Vec2f& Vec2f::operator*=(const float scalar) {
     this->x *= scalar;
     this->y *= scalar;
     return *this;
