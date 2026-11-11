@@ -52,9 +52,7 @@ add_subdirectory("${FRAMEFLOW_PATH}")
 add_subdirectory("${SPDLOG_PATH}")
 
 
-# test zig dep
-add_subdirectory(zig/frameflow-zig)
-add_subdirectory(rust/frameflow_rs)
+add_subdirectory(rust/frameflow2)
 
 if (ANVIL2_BUILD_LUA)
     set(LUA_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/Lua-5.4.7")
@@ -112,8 +110,6 @@ target_link_libraries(anvil2 PUBLIC
     spdlog::spdlog
 )
 
-# test zig
-target_link_libraries(anvil2 PUBLIC frameflow-zig)
 target_link_libraries(anvil2 PUBLIC frameflow_rs)
 
 if (ANVIL2_BUILD_LUA)

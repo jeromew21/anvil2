@@ -8,7 +8,6 @@
  */
 #include "anvil2/tween/tween.hpp"
 
-#include <frameflow-zig.h>
 #include <frameflow-rs.h>
 
 #include <box2d/box2d.h>
@@ -57,7 +56,6 @@ int main() {
     InitWindow(screenWidth, screenHeight, "Pong");
     // SetTargetFPS(60);
 
-    mylib_greet("zig");
     rs_greet("rust");
 
     auto *system = frameflow_init_system();
