@@ -7,3 +7,4 @@ build-debug
 cmake-build-*
 *.DS_Store
 imgui.ini
+external/fmt-12.1.0/support/.gradle

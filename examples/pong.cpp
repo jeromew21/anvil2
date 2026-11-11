@@ -8,10 +8,14 @@
  */
 #include "anvil2/tween/tween.hpp"
 
+#include <frameflow-zig.h>
+#include <frameflow-rs.h>
+
 #include <box2d/box2d.h>
 #include <box2d/math_functions.h>
 #include <box2d/math_types.h>
 #include <raylib.h>
+#include <fmt/core.h>
 
 namespace {
 
@@ -52,6 +56,12 @@ int main() {
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(screenWidth, screenHeight, "Pong");
     // SetTargetFPS(60);
+
+    mylib_greet("zig");
+    rs_greet("rust");
+
+    auto *system = frameflow_init_system();
+    frameflow_destroy_system(system);
 
     b2WorldDef worldDef = b2DefaultWorldDef();
     worldDef.gravity = (b2Vec2){0.0f, 10.0f};
