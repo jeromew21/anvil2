@@ -52,7 +52,7 @@ add_subdirectory("${FRAMEFLOW_PATH}")
 add_subdirectory("${SPDLOG_PATH}")
 
 
-add_subdirectory(rust/frameflow2)
+# add_subdirectory(rust/frameflow2)
 
 if (ANVIL2_BUILD_LUA)
     set(LUA_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/Lua-5.4.7")
@@ -110,7 +110,7 @@ target_link_libraries(anvil2 PUBLIC
     spdlog::spdlog
 )
 
-target_link_libraries(anvil2 PUBLIC frameflow_rs)
+# target_link_libraries(anvil2 PUBLIC frameflow_rs)
 
 if (ANVIL2_BUILD_LUA)
     target_link_libraries(anvil2 PUBLIC lua_static sol2::sol2)

@@ -8,7 +8,7 @@
  */
 #include "anvil2/tween/tween.hpp"
 
-#include <frameflow-rs.h>
+// #include <frameflow-rs.h>
 
 #include <box2d/box2d.h>
 #include <box2d/math_functions.h>
@@ -56,10 +56,10 @@ int main() {
     InitWindow(screenWidth, screenHeight, "Pong");
     // SetTargetFPS(60);
 
-    rs_greet("rust");
+    // rs_greet("rust");
 
-    auto *system = frameflow_init_system();
-    frameflow_destroy_system(system);
+    // auto *system = frameflow_init_system();
+    // frameflow_destroy_system(system);
 
     b2WorldDef worldDef = b2DefaultWorldDef();
     worldDef.gravity = (b2Vec2){0.0f, 10.0f};
