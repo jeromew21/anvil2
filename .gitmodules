@@ -1,0 +1,3 @@
+[submodule "rust/frameflow2"]
+	path = rust/frameflow2
+	url = git@github.com:jeromew21/frameflow2.git
