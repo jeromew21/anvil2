@@ -52,8 +52,6 @@ add_subdirectory("${FRAMEFLOW_PATH}")
 add_subdirectory("${SPDLOG_PATH}")
 
 
-# add_subdirectory(rust/frameflow2)
-
 if (ANVIL2_BUILD_LUA)
     set(LUA_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/Lua-5.4.7")
     set(SOL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/sol2")
@@ -66,7 +64,7 @@ if (ANVIL2_BUILD_BOX2D)
     add_subdirectory("${BOX2D_PATH}")
 endif()
 
-add_library(anvil-raylib-backend STATIC
+set(ANVIL_SOURCES
     "${IMGUI_PATH}/imgui.h"
     "${IMGUI_PATH}/imgui.cpp"
     "${IMGUI_PATH}/imgui_widgets.cpp"
@@ -78,17 +76,6 @@ add_library(anvil-raylib-backend STATIC
     "${IMGUI_PATH}/misc/freetype/imgui_freetype.h"
     "${IMGUI_PATH}/misc/freetype/imgui_freetype.cpp"
     "${RLIMGUI_PATH}/rlImGui.cpp"
-)
-
-target_include_directories(anvil-raylib-backend PUBLIC
-    "${IMGUI_PATH}"
-    "${IMGUI_PATH}/misc/cpp"
-    "${RLIMGUI_PATH}"
-)
-
-target_link_libraries(anvil-raylib-backend PUBLIC raylib freetype harfbuzz)
-
-set(ANVIL_SOURCES
     src/anvil2/math/vec2.cpp
     src/anvil2/random/random.cpp
     src/anvil2/tween/tween.cpp
@@ -98,19 +85,22 @@ add_library(anvil2 STATIC ${ANVIL_SOURCES})
 target_compile_features(anvil2 PUBLIC cxx_std_17)
 
 target_include_directories(anvil2 PUBLIC
+    "${IMGUI_PATH}"
+    "${IMGUI_PATH}/misc/cpp"
+    "${RLIMGUI_PATH}"
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
     "${CMAKE_CURRENT_SOURCE_DIR}/external/include"
 )
 
 target_link_libraries(anvil2 PUBLIC
-    anvil-raylib-backend
+    raylib
+    freetype
+    harfbuzz
     frameflow::frameflow
     fmt::fmt
     PhysFS::PhysFS
     spdlog::spdlog
 )
-
-# target_link_libraries(anvil2 PUBLIC frameflow_rs)
 
 if (ANVIL2_BUILD_LUA)
     target_link_libraries(anvil2 PUBLIC lua_static sol2::sol2)
