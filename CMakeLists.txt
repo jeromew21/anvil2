@@ -16,7 +16,7 @@ if(EMSCRIPTEN)
 endif()
 
 # Core dependencies
-set(IMGUI_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/imgui-1.93.0")
+set(IMGUI_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/imgui-1.92.7")
 set(RAYLIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/raylib-6.2")
 set(RLIMGUI_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/rlImGui-Raylib_6_0")
 set(FREETYPE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/freetype-2.15.0")
