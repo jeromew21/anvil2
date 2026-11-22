@@ -24,8 +24,6 @@ do not have recent releases and we have to simply download the latest source.
 
 TODO: make sure we are honoring licenses.
 
-**Note**: Avoid submodules. I don't understand how recursive submodules work. One layer is more than enough added complexity.
-
 ### Windows Development
 TODO
 
