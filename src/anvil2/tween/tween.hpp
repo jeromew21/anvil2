@@ -42,7 +42,8 @@ namespace Easing {
 using EasingFunc = std::function<float(float)>;
 
 class Tween {
-public:
+    float delay_{0.0f};
+
     float *target;
 
     float start_value;
@@ -53,12 +54,11 @@ public:
 
     float elapsed;
 
-    float delay_{0.0f};
-
     EasingFunc easing;
 
     std::function<void()> on_complete_callback;
 
+public:
     bool finished;
 
     Tween(float *ptr, float start, float end, float dur, EasingFunc ease = Easing::Linear);
@@ -70,7 +70,7 @@ public:
     // DEPRECATED 
     void set_on_complete(const std::function<void()> &callback);
 
-    void on_complete(const std::function<void()> &callback);
+    Tween* on_complete(const std::function<void()> &callback);
 };
 
 class TweenManager {
@@ -86,10 +86,14 @@ public:
     Tween *create_tween_from_to(float *target, float start_value, float end_value,
                              float duration, EasingFunc easing = Easing::Linear);
 
+    Tween *create_timer(float duration);
+
     void update(float delta_time);
 
     void clear();
 
     // TODO: rename to get()
     static TweenManager& get_instance();
+
+    static TweenManager& get();
 };

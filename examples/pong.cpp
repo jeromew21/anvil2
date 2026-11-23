@@ -116,6 +116,11 @@ int main() {
     float x = 0;
     tween_manager.create_tween(&x, 400.0f, 2.0f, Easing::EaseInOutSine);
 
+    tween_manager.create_timer(2.0f)->on_complete([]() {
+        // Timer completed
+        fmt::print("Timer completed\n");
+    });
+
     const int subStepCount = 4;
     const float timeStep = 1.0f / 60.0f;
 
