@@ -13,6 +13,11 @@ Tween::Tween(float *ptr, float start, float end, float dur, EasingFunc ease) : t
 void Tween::update(const float dt) {
     if (finished) return;
 
+    if (delay_ > 0.0f) {
+        delay_ -= dt;
+        if (delay_ > 0.0f) return;
+    }
+
     elapsed += dt;
     const float u = std::clamp(elapsed / duration, 0.0f, 1.0f);  // Use float, not double
 
@@ -22,20 +27,31 @@ void Tween::update(const float dt) {
     if (u >= 1.0f) {  // Use 1.0f for consistency
         *target = end_value;  // Force exact end value
         finished = true;
-        if (on_complete) on_complete();
+        if (on_complete_callback) on_complete_callback();
     }
+}
+
+Tween *Tween::delay(float d) {
+    delay_ = d;
+    return this;
 }
 
 void TweenManager::update(float delta_time) {
     for (auto& t : tween_list)
         t.update(delta_time);
 
-    // std::erase_if(tween_list, [](const Tween& t){ return t.finished; });
     tween_list.erase(std::remove_if(tween_list.begin(), tween_list.end(), [](const Tween& t){ return t.finished; }), tween_list.end());
 }
 
+/**
+ * DEPRECATED in favor of on_complete()
+ */
 void Tween::set_on_complete(const std::function<void()> &callback) {
-    on_complete = callback;
+    on_complete(callback);
+}
+
+void Tween::on_complete(const std::function<void()> &callback) {
+    on_complete_callback = callback;
 }
 
 Tween *TweenManager::create_tween(float *target, float end_value, float duration, EasingFunc easing) {

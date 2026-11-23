@@ -53,9 +53,11 @@ public:
 
     float elapsed;
 
+    float delay_{0.0f};
+
     EasingFunc easing;
 
-    std::function<void()> on_complete;
+    std::function<void()> on_complete_callback;
 
     bool finished;
 
@@ -63,10 +65,18 @@ public:
 
     void update(float dt);
 
+    Tween* delay(float d);
+
+    // DEPRECATED 
     void set_on_complete(const std::function<void()> &callback);
+
+    void on_complete(const std::function<void()> &callback);
 };
 
 class TweenManager {
+    // Should this be a linked list for faster removals?
+    // Or should we just heap allocate and store?
+    // We should profile...
     std::vector<Tween> tween_list;
 
 public:
@@ -80,5 +90,6 @@ public:
 
     void clear();
 
+    // TODO: rename to get()
     static TweenManager& get_instance();
 };
