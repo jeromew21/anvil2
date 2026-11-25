@@ -59,9 +59,9 @@
 #endif
 
 #ifdef NDEBUG
-inline constexpr bool NDEBUG = true;
+inline constexpr bool ANVIL_RELEASE_MODE = true;
 #else
-inline constexpr bool NDEBUG = false;
+inline constexpr bool ANVIL_RELEASE_MODE = false;
 #endif
 
 // Compile-time sanity check so you never compile for an unknown/broken target
